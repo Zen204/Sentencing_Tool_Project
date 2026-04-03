@@ -161,13 +161,8 @@ function loadFactorsPage() {
   <h3>Range: ${rangeMin} – ${rangeMax} years</h3>
 
   <p><b>Instructions:</b></p>
-  <ul>
-  <li>Enter percentage adjustments.</li>
-  <li>Use positive numbers only.</li>
-  <li>Aggravating factors increase the sentence.</li>
-  <li>Mitigating factors decrease the sentence.</li>
-  <li>Example: entering 10 means a 10% change.</li>
-  </ul>
+  <p>Enter percentage adjustments. Use positive numbers only. Aggravating factors increase the sentence and mitigating factors decrease the sentence.</p>
+  
 
   <h3>Offence Aggravating Factors %</h3>
 
