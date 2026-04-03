@@ -205,10 +205,10 @@ function loadFactorsPage() {
   <h2><b>Range: ${rangeMin} – ${rangeMax} years</b></h2>
 
   <p><b>Instructions:</b></p>
-  <p>Enter percentage adjustments. Use positive numbers only. Aggravating factors increase the sentence and mitigating factors decrease the sentence.</p>
+  <p>Enter “X” percentage adjustments for the sentence. Use positive numbers only.</p>
   
 
-  <h3>Offence Aggravating Factors %</h3>
+  <h3>Increase by X% for offence aggravating factors:</h3>
 
   <ul>
   <li>Firearm modified to make it more dangerous</li>
@@ -225,7 +225,7 @@ function loadFactorsPage() {
   <p>Reasoning:</p>
   <textarea id="aggOffReason"></textarea>
 <br> </br>
-  <h3>Offence Mitigating Factors %</h3>
+  <h3>Reduce by X% for offence mitigating factors:</h3>
 
   <ul>
   <li>Voluntary surrender of firearm</li>
@@ -240,7 +240,7 @@ function loadFactorsPage() {
   <p>Reasoning:</p>
   <textarea id="mitOffReason"></textarea>
 <br> </br>
-  <h3>Offender Aggravating Factors %</h3>
+  <h3>Increase by X% for offender aggravating factors:</h3>
 
   <ul>
   <li>Previous firearm convictions</li>
@@ -253,7 +253,7 @@ function loadFactorsPage() {
   <p>Reasoning:</p>
   <textarea id="aggOffenderReason"></textarea>
 <br> </br>
-  <h3>Offender Mitigating Factors %</h3>
+  <h3>Reduce by X% for offender mitigating factors:</h3>
 
   <ul>
   <li>Good character</li>
@@ -297,21 +297,21 @@ function loadCreditPage() {
   container.innerHTML = `
     <h2>Sentence Reduction/Addition</h2>
     <p><b>Instructions:</b></p>
-    <p>Enter percentage adjustments. Use positive numbers only.  </p>
+    <p>Enter “X” percentage adjustments for the sentence. Use positive numbers only.  </p>
 <p> </p>
-    <h3>Sentence reduction % for guilty plea</h3>
+    <h3>Reduce by X% for guilty plea:</h3>
     <input id="guilty" type="number">
     <p>Reasoning:</p><textarea></textarea>
 <br></br>
-    <h3>Sentence addition % for other offences incurred</h3>
+    <h3>Increase by X% for other offences incurred:</h3>
     <input id="other" type="number">
     <p>Reasoning:</p><textarea></textarea>
 <br></br>
-    <h3>Sentence reduction % for time spent on demand for offence</h3>
+    <h3>Reduce by X% for time spent on remand for offence:</h3>
     <input id="remand" type="number">
     <p>Reasoning:</p><textarea></textarea>
 <br></br>
-    <h3>Sentence addition % for ancillary and restraining orders, confiscation, compensation, etc.</h3>
+    <h3>Increase by X% for ancillary and restraining orders, confiscation, compensation, etc.:</h3>
     <input id="ancillary" type="number">
     <p>Reasoning:</p><textarea></textarea>
 
