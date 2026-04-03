@@ -175,15 +175,15 @@ function loadCreditPage() {
 
     <p>Guilty plea credit %</p>
     <input id="guilty" type="number">
-    <p>Reasoning</p><textarea></textarea>
+    <p>Reasoning:</p><textarea></textarea>
 
     <p>Sentencing for other offences debit %</p>
     <input id="other" type="number">
-    <p>Reasoning</p><textarea></textarea>
+    <p>Reasoning:</p><textarea></textarea>
 
     <p>Time spent on remand for offence credit %</p>
     <input id="remand" type="number">
-    <p>Reasoning</p><textarea></textarea>
+    <p>Reasoning:</p><textarea></textarea>
 
     <p>Ancillary and restraining orders, confiscation, compensation, etc, debit %</p>
     <input id="ancillary" type="number">
