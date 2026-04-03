@@ -435,22 +435,22 @@ Range = ${selected.min * 100}% – ${selected.max * 100}% of 30
 <br> </br>
 <h3>User's Selections</h3>
 
-<p><b>Consequence Category:</b> ${data.consequence}</p>
+<p>Consequence Category: ${data.consequence}</p>
 
 <p>Consequence Reasoning:</p>
 <p>${data.consequenceReason}</p>
 
-<p><b>Factors selected:</b></p>
+<p>Factors selected:</p>
 <ul>
 ${data.consequenceFactors.map(x => `<li>${x}</li>`).join("")}
 </ul>
 
-<p><b>Seriousness Level:</b> ${data.seriousness}</p>
+<p>Seriousness Level: ${data.seriousness}</p>
 
 <p>Seriousness Reasoning:</p>
 <p>${data.seriousnessReason}</p>
 
-<p><b>Factors selected:</b></p>
+<p>Factors selected:</p>
 <ul>
 ${data.seriousnessFactors.map(x => `<li>${x}</li>`).join("")}
 </ul>
