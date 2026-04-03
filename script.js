@@ -204,7 +204,7 @@ function getCategory(consequence) {
 }
 
 function getLevel(seriousness) {
-  if (seriousness === "Lesser") return "A";
+  if (seriousness === "High") return "A";
   if (seriousness === "Medium") return "B";
   return "C";
 }
