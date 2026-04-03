@@ -239,7 +239,7 @@ function loadCreditPage() {
     <h2>Sentence Reduction/Addition</h2>
     <p><b>Instructions:</b></p>
     <p>Input positive numbers only. </p>
-
+<br> </br>
     <p>Guilty plea: Sentence REDUCTION %</p>
     <input id="guilty" type="number">
     <p>Reasoning:</p><textarea></textarea>
@@ -248,7 +248,7 @@ function loadCreditPage() {
     <input id="other" type="number">
     <p>Reasoning:</p><textarea></textarea>
 
-    <p>Time spent on remand for offence: Sentence REDUDCTION %</p>
+    <p>Time spent on remand for offence: Sentence REDUCTION %</p>
     <input id="remand" type="number">
     <p>Reasoning:</p><textarea></textarea>
 
