@@ -415,10 +415,10 @@ data.consequenceReason = document.getElementById("consequenceReason")?.value || 
 
 container.innerHTML = `
 
-<h1>Final Sentence</h1>
+<h1>Final Sentence: ${sentence.toFixed(2)} years</h1>
 
-<h2>${sentence.toFixed(2)} years</h2>
 
+<br> </br>
 <h3>Starting Point Calculation</h3>
 
 <p>Maximum sentence = 30 years</p>
@@ -432,10 +432,13 @@ Starting Point = ${selected.start * 100}% × 30
 Range = ${selected.min * 100}% – ${selected.max * 100}% of 30  
 = ${rangeMin.toFixed(2)} – ${rangeMax.toFixed(2)} years
 </p>
-
-<h3>Your Selections</h3>
+<br> </br>
+<h3>User's Selections</h3>
 
 <p><b>Consequence Category:</b> ${data.consequence}</p>
+
+<p>Consequence Reasoning:</p>
+<p>${data.consequenceReason}</p>
 
 <p><b>Factors selected:</b></p>
 <ul>
@@ -443,6 +446,9 @@ ${data.consequenceFactors.map(x => `<li>${x}</li>`).join("")}
 </ul>
 
 <p><b>Seriousness Level:</b> ${data.seriousness}</p>
+
+<p>Seriousness Reasoning:</p>
+<p>${data.seriousnessReason}</p>
 
 <p><b>Factors selected:</b></p>
 <ul>
@@ -453,46 +459,33 @@ ${data.seriousnessFactors.map(x => `<li>${x}</li>`).join("")}
 <h3>Adjustments</h3>
 
 <p>Offence aggravating: ${aggOff}%</p>
+<p>Offence Aggravating Reason:</p>
+<p>${data.aggOffReason}</p>
 <p>Offence mitigating: ${mitOff}%</p>
+<p>Offence Mitigating Reason:</p>
+<p>${data.mitOffReason}</p>
 <p>Offender aggravating: ${aggOffender}%</p>
+<p>Offender Aggravating Reason:</p>
+<p>${data.aggOffenderReason}</p>
 <p>Offender mitigating: ${mitOffender}%</p>
-
+<p>Offender Mitigating Reason:</p>
+<p>${data.mitOffenderReason}</p>
+<br> </br>
 <h3>Credits and Debits</h3>
 
 <p>Guilty plea credit: ${guilty}%</p>
-<p>Other offences debit: ${other}%</p>
-<p>Remand credit: ${remand}%</p>
-<p>Ancillary orders debit: ${ancillary}%</p>
-
-<h3>Consequence Reasoning:</h3>
-<p>${data.consequenceReason}</p>
-
-<h3>Seriousness Reasoning:</h3>
-<p>${data.seriousnessReason}</p>
-
-<h3>Offence Aggravating Reason:</h3>
-<p>${data.aggOffReason}</p>
-
-<h3>Offence Mitigating Reason:</h3>
-<p>${data.mitOffReason}</p>
-
-<h3>Offender Aggravating Reason:</h3>
-<p>${data.aggOffenderReason}</p>
-
-<h3>Offender Mitigating Reason:</h3>
-<p>${data.mitOffenderReason}</p>
-
-<h3>Guilty Plea Reason:</h3>
+<p>Guilty Plea Reason:</p>
 <p>${data.guiltyReason}</p>
-
-<h3>Other Offences Reason:</h3>
+<p>Other offences debit: ${other}%</p>
+<p>Other Offences Reason:</p>
 <p>${data.otherReason}</p>
-
-<h3>Remand Reason:</h3>
+<p>Remand credit: ${remand}%</p>
+<p>Remand Reason:</p>
 <p>${data.remandReason}</p>
-
-<h3>Ancillary Orders Reason:</h3>
+<p>Ancillary orders debit: ${ancillary}%</p>
+<p>Ancillary Orders Reason:</p>
 <p>${data.ancillaryReason}</p>
+
 
 `;
 
