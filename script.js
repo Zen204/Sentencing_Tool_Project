@@ -464,34 +464,34 @@ ${data.seriousnessFactors.map(x => `<li>${x}</li>`).join("")}
 <p>Remand credit: ${remand}%</p>
 <p>Ancillary orders debit: ${ancillary}%</p>
 
-<h3>Consequence Reasoning</h3>
+<h3>Consequence Reasoning:</h3>
 <p>${data.consequenceReason}</p>
 
-<h3>Seriousness Reasoning</h3>
+<h3>Seriousness Reasoning:</h3>
 <p>${data.seriousnessReason}</p>
 
-<h3>Offence Aggravating Reason</h3>
+<h3>Offence Aggravating Reason:</h3>
 <p>${data.aggOffReason}</p>
 
-<h3>Offence Mitigating Reason</h3>
+<h3>Offence Mitigating Reason:</h3>
 <p>${data.mitOffReason}</p>
 
-<h3>Offender Aggravating Reason</h3>
+<h3>Offender Aggravating Reason:</h3>
 <p>${data.aggOffenderReason}</p>
 
-<h3>Offender Mitigating Reason</h3>
+<h3>Offender Mitigating Reason:</h3>
 <p>${data.mitOffenderReason}</p>
 
-<h3>Guilty Plea Reason</h3>
+<h3>Guilty Plea Reason:</h3>
 <p>${data.guiltyReason}</p>
 
-<h3>Other Offences Reason</h3>
+<h3>Other Offences Reason:</h3>
 <p>${data.otherReason}</p>
 
-<h3>Remand Reason</h3>
+<h3>Remand Reason:</h3>
 <p>${data.remandReason}</p>
 
-<h3>Ancillary Orders Reason</h3>
+<h3>Ancillary Orders Reason:</h3>
 <p>${data.ancillaryReason}</p>
 
 `;
