@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Firearms Sentencing Calculator</title>
+
+<style>
+body{
+font-family: Arial;
+margin:40px;
+background:#f5f5f5;
+}
+
+.page{
+display:none;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.page.active{
+display:block;
+}
+
+button{
+margin-top:20px;
+padding:10px 20px;
+font-size:16px;
+cursor:pointer;
+}
+
+h2{
+margin-bottom:20px;
+}
+
+.result{
+font-size:28px;
+font-weight:bold;
+color:green;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+
+<h2>Select Offence</h2>
+
+<select id="offence">
+<option value="">Select</option>
+<option value="firearm">Firearms Offence</option>
+</select>
+
+<br><br>
+
+<button onclick="nextPage(2)">Next</button>
+
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+
+<h2>Consequence Level</h2>
+
+<label><input type="radio" name="consequence" value="lesser"> Lesser</label><br>
+<label><input type="radio" name="consequence" value="high"> High</label><br>
+<label><input type="radio" name="consequence" value="highest"> Highest</label>
+
+<br>
+
+<label>Short Answer 1</label><br>
+<input type="text"><br><br>
+
+<label>Short Answer 2</label><br>
+<input type="text">
+
+<br>
+
+<button onclick="showConsequencePage()">Next</button>
+
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+
+<h2>Check all boxes that are relevant</h2>
+
+<div id="consequenceOptions"></div>
+
+<br>
+
+Explain reasoning:<br>
+<textarea rows="4" cols="50"></textarea>
+
+<br>
+
+<button onclick="nextPage(4)">Next</button>
+
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+
+<h2>Seriousness Level</h2>
+
+<label><input type="radio" name="seriousness" value="lesser"> Lesser</label><br>
+<label><input type="radio" name="seriousness" value="medium"> Medium</label><br>
+<label><input type="radio" name="seriousness" value="high"> High</label>
+
+<br>
+
+<button onclick="showSeriousnessPage()">Next</button>
+
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+
+<h2>Seriousness Details</h2>
+
+<div id="seriousnessOptions"></div>
+
+<br>
+
+Explain reasoning:<br>
+<textarea rows="4" cols="50"></textarea>
+
+<br>
+
+<button onclick="setStartingPoint()">Next</button>
+
+</div>
+
+<!-- PAGE 6 -->
+<div class="page" id="page6">
+
+<h2>Sentencing Adjustments</h2>
+
+<p><b id="startPointText"></b></p>
+<p id="rangeText"></p>
+
+1. Aggravating Factors %<br>
+<input type="number" id="agg1"><br>
+
+Reasoning<br>
+<input type="text"><br><br>
+
+2. Mitigating Factors %<br>
+<input type="number" id="mit1"><br>
+
+Reasoning<br>
+<input type="text"><br><br>
+
+3. Offender Aggravating Factors %<br>
+<input type="number" id="agg2"><br>
+
+Reasoning<br>
+<input type="text"><br><br>
+
+4. Offender Mitigating Factors %<br>
+<input type="number" id="mit2"><br>
+
+Reasoning<br>
+<input type="text">
+
+<br>
+
+<button onclick="calculateStep1()">Next</button>
+
+</div>
+
+<!-- PAGE 7 -->
+<div class="page" id="page7">
+
+<h2>Credits and Debits</h2>
+
+Guilty plea credit %<br>
+<input type="number" id="credit1"><br>
+Reasoning<br><input type="text"><br><br>
+
+Other offences debit %<br>
+<input type="number" id="debit1"><br>
+Reasoning<br><input type="text"><br><br>
+
+Remand credit %<br>
+<input type="number" id="credit2"><br>
+Reasoning<br><input type="text"><br><br>
+
+Ancillary orders debit %<br>
+<input type="number" id="debit2"><br>
+Reasoning<br><input type="text">
+
+<br>
+
+<button onclick="calculateFinal()">Next</button>
+
+</div>
+
+<!-- PAGE 8 -->
+<div class="page" id="page8">
+
+<h2>Final Sentence</h2>
+
+<p class="result" id="sentence"></p>
+
+</div>
+
+
+<script>
+
+let maxSentence = 30
+let startingPoint = 0
+let currentSentence = 0
+
+function nextPage(num){
+
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
+document.getElementById("page"+num).classList.add("active")
+
+}
+
+function showConsequencePage(){
+
+let val = document.querySelector('input[name="consequence"]:checked')
+
+if(!val){alert("Select consequence level");return}
+
+let html=""
+
+if(val.value=="lesser"){
+html=`
+<label><input type="checkbox"> Firearm concealed</label><br>
+<label><input type="checkbox"> Ammunition not in firearm</label><br>
+<label><input type="checkbox"> None of categories 1 and 2 applies</label>
+`
+}
+
+if(val.value=="high"){
+html=`
+<label><input type="checkbox"> More than one concealed firearm</label><br>
+<label><input type="checkbox"> Trafficking less than five firearms</label><br>
+<label><input type="checkbox"> Property damage with firearm</label><br>
+<label><input type="checkbox"> Carrying firearm openly</label><br>
+<label><input type="checkbox"> Firearm during offence</label>
+`
+}
+
+if(val.value=="highest"){
+html=`
+<label><input type="checkbox"> Injury caused</label><br>
+<label><input type="checkbox"> Discharging firearm to cause terror</label><br>
+<label><input type="checkbox"> Trafficking 5+ firearms</label><br>
+<label><input type="checkbox"> Particularly dangerous firearm</label>
+`
+}
+
+document.getElementById("consequenceOptions").innerHTML=html
+
+nextPage(3)
+
+}
+
+function showSeriousnessPage(){
+
+let val = document.querySelector('input[name="seriousness"]:checked')
+
+if(!val){alert("Select seriousness level");return}
+
+let html=""
+
+if(val.value=="lesser"){
+html=`
+<label><input type="checkbox"> Firearm presence unknown</label><br>
+<label><input type="checkbox"> Ammunition non live</label><br>
+<label><input type="checkbox"> None of levels A and B</label>
+`
+}
+
+if(val.value=="medium"){
+html=`
+<label><input type="checkbox"> Firearm brandished</label><br>
+<label><input type="checkbox"> Firearm threatened concealed</label><br>
+<label><input type="checkbox"> Recovered ammunition fits firearm</label><br>
+<label><input type="checkbox"> More than 5 rounds</label><br>
+<label><input type="checkbox"> Firearm carried public place</label>
+`
+}
+
+if(val.value=="high"){
+html=`
+<label><input type="checkbox"> Gang membership</label><br>
+<label><input type="checkbox"> Group activity</label><br>
+<label><input type="checkbox"> Firearm with drug supply</label><br>
+<label><input type="checkbox"> More than two rounds</label><br>
+<label><input type="checkbox"> Round in chamber</label><br>
+<label><input type="checkbox"> More than 20 rounds</label><br>
+<label><input type="checkbox"> Prohibited ammunition</label><br>
+<label><input type="checkbox"> Intention to cause injury</label><br>
+<label><input type="checkbox"> Near place of worship/school/gathering</label>
+`
+}
+
+document.getElementById("seriousnessOptions").innerHTML=html
+
+nextPage(5)
+
+}
+
+function setStartingPoint(){
+
+let seriousness = document.querySelector('input[name="seriousness"]:checked').value
+let consequence = document.querySelector('input[name="consequence"]:checked').value
+
+let percent=0
+let range=""
+
+if(consequence=="lesser" && seriousness=="lesser"){percent=50;range="35%-65%"}
+if(consequence=="lesser" && seriousness=="medium"){percent=65;range="50%-80%"}
+if(consequence=="lesser" && seriousness=="high"){percent=75;range="60%-90%"}
+
+if(consequence=="high" && seriousness=="lesser"){percent=40;range="25%-55%"}
+if(consequence=="high" && seriousness=="medium"){percent=50;range="35%-65%"}
+if(consequence=="high" && seriousness=="high"){percent=65;range="50%-80%"}
+
+if(consequence=="highest" && seriousness=="lesser"){percent=30;range="non custodial-45%"}
+if(consequence=="highest" && seriousness=="medium"){percent=40;range="25%-55%"}
+if(consequence=="highest" && seriousness=="high"){percent=50;range="35%-65%"}
+
+startingPoint = (percent/100)*maxSentence
+currentSentence = startingPoint
+
+document.getElementById("startPointText").innerText="Starting Point: "+startingPoint.toFixed(2)+" years"
+document.getElementById("rangeText").innerText="Range: "+range
+
+nextPage(6)
+
+}
+
+function calculateStep1(){
+
+let agg1=parseFloat(document.getElementById("agg1").value)||0
+let mit1=parseFloat(document.getElementById("mit1").value)||0
+let agg2=parseFloat(document.getElementById("agg2").value)||0
+let mit2=parseFloat(document.getElementById("mit2").value)||0
+
+currentSentence += startingPoint*(agg1/100)
+currentSentence -= startingPoint*(mit1/100)
+currentSentence += startingPoint*(agg2/100)
+currentSentence -= startingPoint*(mit2/100)
+
+nextPage(7)
+
+}
+
+function calculateFinal(){
+
+let c1=parseFloat(document.getElementById("credit1").value)||0
+let c2=parseFloat(document.getElementById("credit2").value)||0
+let d1=parseFloat(document.getElementById("debit1").value)||0
+let d2=parseFloat(document.getElementById("debit2").value)||0
+
+currentSentence -= startingPoint*(c1/100)
+currentSentence -= startingPoint*(c2/100)
+
+currentSentence += startingPoint*(d1/100)
+currentSentence += startingPoint*(d2/100)
+
+document.getElementById("sentence").innerText=currentSentence.toFixed(2)+" Years"
+
+nextPage(8)
+
+}
+
+</script>
+
+</body>
+</html>
