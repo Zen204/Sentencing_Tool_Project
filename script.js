@@ -46,16 +46,22 @@ function loadConsequencePage() {
 
   container.innerHTML = `<h2>Check all that apply</h2>`;
 
-  options[value.value].forEach(opt => {
-    container.innerHTML += `<label><input type="checkbox"> ${opt}</label>`;
-  });
+container.innerHTML += `<div class="section">`;
 
-  container.innerHTML += `
+options[value.value].forEach(opt => {
+  container.innerHTML += `<label><input type="checkbox"> ${opt}</label>`;
+});
+
+container.innerHTML += `</div>`;
+
+container.innerHTML += `
+  <div class="section">
     <p>Explain your reasoning:</p>
     <textarea id="consequenceReason"></textarea>
-    <button onclick="nextPage()">Next</button>
-  `;
+  </div>
 
+  <button onclick="nextPage()">Next</button>
+`;
   nextPage();
 }
 
@@ -100,11 +106,14 @@ function loadSeriousnessPage() {
     container.innerHTML += `<label><input type="checkbox"> ${opt}</label>`;
   });
 
-  container.innerHTML += `
+container.innerHTML += `
+  <div class="section">
     <p>Explain your reasoning:</p>
     <textarea></textarea>
-    <button onclick="loadFactorsPage()">Next</button>
-  `;
+  </div>
+
+  <button onclick="loadFactorsPage()">Next</button>
+`;
 
   nextPage();
 }
