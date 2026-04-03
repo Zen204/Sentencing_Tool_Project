@@ -236,22 +236,22 @@ function loadCreditPage() {
   let container = document.getElementById("creditPage");
 
   container.innerHTML = `
-    <h2>Instructions:</h2>
+    <h2>Sentence Reduction/Addition</h2>
     <p>Input only positive numbers. Sentence reduced for credit, increased for debit.</p>
 
-    <p>Guilty plea credit %</p>
+    <p>Guilty plea (Sentence REDUCTION) %</p>
     <input id="guilty" type="number">
     <p>Reasoning:</p><textarea></textarea>
 
-    <p>Sentencing for other offences debit %</p>
+    <p>Sentencing for other offences (Sentence ADDITION) %</p>
     <input id="other" type="number">
     <p>Reasoning:</p><textarea></textarea>
 
-    <p>Time spent on remand for offence credit %</p>
+    <p>Time spent on remand for offence (Sentence REDUDCTION) %</p>
     <input id="remand" type="number">
     <p>Reasoning:</p><textarea></textarea>
 
-    <p>Ancillary and restraining orders, confiscation, compensation, etc, debit %</p>
+    <p>Ancillary and restraining orders, confiscation, compensation, etc, (Sentence ADDITION) %</p>
     <input id="ancillary" type="number">
     <p>Reasoning:</p><textarea></textarea>
 
