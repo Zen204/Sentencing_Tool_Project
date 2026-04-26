@@ -6,6 +6,7 @@
 }
 
 body {
+  font-size: 1rem;
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #1e1e2f, #2e3a59);
   color: white;
@@ -86,6 +87,7 @@ textarea {
 
 /* Buttons */
 button {
+  font-size: 1rem;
   margin-top: 25px;
   padding: 12px 20px;
   border: none;
