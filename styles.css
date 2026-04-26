@@ -38,13 +38,13 @@ body {
 
 /* Headings */
 h1 {
-  font-size: 2.2rem;
+  font-size: 5rem;
   margin-bottom: 20px;
   color: #f4d03f;
 }
 
 h2 {
-  font-size: 1.6rem;
+  font-size: 4rem;
   margin-bottom: 20px;
   color: #f4d03f;
 }
@@ -61,7 +61,7 @@ label {
   align-items: center;
   gap: 10px;
   margin: 12px 0;
-  font-size: 1rem;
+  font-size: 3rem;
 }
 
 /* Inputs */
@@ -75,7 +75,7 @@ select {
   border-radius: 8px;
   border: none;
   outline: none;
-  font-size: 0.95rem;
+  font-size: 3rem;
 }
 
 /* Textarea spacing */
