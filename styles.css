@@ -165,7 +165,7 @@ body {
 /* ── Instruction Block ── */
 
 .instruction {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-style: italic;
   color: var(--muted);
   margin-bottom: 20px;
